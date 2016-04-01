@@ -1,4 +1,0 @@
-C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services.Test\bin\Debug\LateRooms.CheckoutKata.Services.Test.dll
-C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services.Test\bin\Debug\LateRooms.CheckoutKata.Services.Test.pdb
-C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services.Test\obj\Debug\LateRooms.CheckoutKata.Services.Test.dll
-C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services.Test\obj\Debug\LateRooms.CheckoutKata.Services.Test.pdb
