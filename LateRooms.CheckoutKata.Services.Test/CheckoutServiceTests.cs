@@ -9,7 +9,7 @@ namespace LateRooms.CheckoutKata.Services.Test
     public class CheckoutServiceTests
     {
         [Fact]
-        void WhenScanningAnItem_ThenTheTotalPriceShouldBeUpdated()
+        public void WhenScanningAnItem_ThenTheTotalPriceShouldBeUpdated()
         {
             // Arrange
             var service = new CheckoutService();

@@ -10,12 +10,11 @@ namespace LateRooms.CheckoutKata.Services
     {
         public void Scan(string item)
         {
-            throw new NotImplementedException();
         }
 
         public int GetTotalPrice()
         {
-            throw new NotImplementedException();
+            return 1;
         }
     }
 }
