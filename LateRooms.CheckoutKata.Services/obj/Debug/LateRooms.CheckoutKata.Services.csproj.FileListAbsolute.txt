@@ -1,0 +1,5 @@
+C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services\bin\Debug\LateRooms.CheckoutKata.Services.dll
+C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services\bin\Debug\LateRooms.CheckoutKata.Services.pdb
+C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services\obj\Debug\LateRooms.CheckoutKata.Services.csprojResolveAssemblyReference.cache
+C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services\obj\Debug\LateRooms.CheckoutKata.Services.dll
+C:\Code\LateRooms\Checkout-kata\LateRooms.CheckoutKata.Services\obj\Debug\LateRooms.CheckoutKata.Services.pdb
