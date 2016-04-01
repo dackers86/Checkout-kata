@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LateRooms.CheckoutKata.Domain
 {
-    interface ICheckout
+    public interface ICheckout
     {
         void Scan(string item);
         int GetTotalPrice();

@@ -66,6 +66,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LateRooms.CheckoutKata.Domain\LateRooms.CheckoutKata.Domain.csproj">
+      <Project>{006be34b-da0d-422c-9c8c-003565f7ad12}</Project>
+      <Name>LateRooms.CheckoutKata.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LateRooms.CheckoutKata.Services\LateRooms.CheckoutKata.Services.csproj">
+      <Project>{a0a030dc-e1dc-46e7-8382-8270fc8ea5cb}</Project>
+      <Name>LateRooms.CheckoutKata.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
