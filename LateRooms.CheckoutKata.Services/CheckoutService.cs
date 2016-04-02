@@ -11,11 +11,13 @@ namespace LateRooms.CheckoutKata.Services
     public class CheckoutService : ICheckout
     {
         private IProductService _productService;
+        private IDiscountService _discountService;
         private List<Item> _items;
 
-        public CheckoutService(IProductService productService)
+        public CheckoutService(IProductService productService, IDiscountService discountService)
         {
             _productService = productService;
+            _discountService = discountService;
             _items = new List<Item>();
         }
 
@@ -23,11 +25,7 @@ namespace LateRooms.CheckoutKata.Services
         public void Scan(string item)
         {
             var product = _productService.GetItem(item);
-
-            if (product.SKU == "B" && _items.Any(x => x.SKU == product.SKU))
-            {
-                product.UnitPrice = product.UnitPrice / 2;
-            }
+            _discountService.ApplyDiscounts(_items, product);
 
             _items.Add(product);
         }

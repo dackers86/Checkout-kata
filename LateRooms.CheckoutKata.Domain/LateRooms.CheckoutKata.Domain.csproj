@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ICheckout.cs" />
+    <Compile Include="Interfaces\IDiscountService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
