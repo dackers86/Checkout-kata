@@ -1,5 +1,6 @@
 ﻿using LateRooms.CheckoutKata.Domain.Interfaces;
 using LateRooms.CheckoutKata.Domain.Models;
+using LateRooms.CheckoutKata.Domain.Models.Offers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,12 @@ namespace LateRooms.CheckoutKata.Services
 {
     public class DiscountService : IDiscountService
     {
-        public Item ApplyDiscounts(List<Item> items, Item item)
+        public void ApplyDiscounts(List<Item> items, Item item)
         {
-            if (item.SKU == "B" && items.Any(x => x.SKU == item.SKU))
+            foreach(var discount in item.Discounts)
             {
-                item.UnitPrice = item.UnitPrice / 2;
+                discount.ApplyDiscounts(items, ref item);
             }
-
-            if (item.SKU == "A" && items.Where(x => x.SKU == "A").ToList().Count == 2)
-            {
-                item.UnitPrice = item.UnitPrice - 20;
-            }
-
-            return item;
         }
     }       
 }

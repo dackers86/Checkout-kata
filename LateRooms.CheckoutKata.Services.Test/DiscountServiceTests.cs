@@ -1,5 +1,7 @@
 ﻿using LateRooms.CheckoutKata.Domain.Interfaces;
 using LateRooms.CheckoutKata.Domain.Models;
+using LateRooms.CheckoutKata.Domain.Models.Interfaces;
+using LateRooms.CheckoutKata.Domain.Models.Offers;
 using NSubstitute;
 using System;
 using System.Collections.Generic;
@@ -18,9 +20,9 @@ namespace LateRooms.CheckoutKata.Services.Test
             // Arrange
             var service = new DiscountService();
 
-            var item1 = new Item { SKU = "A", UnitPrice = 30 };
-            var item2 = new Item { SKU = "A", UnitPrice = 30 };
-            var item3 = new Item { SKU = "A", UnitPrice = 30 };
+            var item1 = new Item { SKU = "A", UnitPrice = 30, Discounts = new List<IDiscount>() { new SpecialOffer() }  };
+            var item2 = new Item { SKU = "A", UnitPrice = 30, Discounts = new List<IDiscount>() { new SpecialOffer() } };
+            var item3 = new Item { SKU = "A", UnitPrice = 30, Discounts = new List<IDiscount>() { new SpecialOffer() } };
 
             var items = new List<Item> { item1, item2 };
 

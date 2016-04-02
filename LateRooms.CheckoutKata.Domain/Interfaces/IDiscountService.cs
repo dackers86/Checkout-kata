@@ -8,6 +8,6 @@ namespace LateRooms.CheckoutKata.Domain.Interfaces
 {
     public interface IDiscountService
     {
-        Item ApplyDiscounts(List<Item> items, Item item);
+        void ApplyDiscounts(List<Item> items, Item item);
     }
 }

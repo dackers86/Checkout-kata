@@ -6,6 +6,8 @@ using Xunit;
 using NSubstitute;
 using LateRooms.CheckoutKata.Domain.Interfaces;
 using LateRooms.CheckoutKata.Domain.Models;
+using LateRooms.CheckoutKata.Domain.Models.Offers;
+using LateRooms.CheckoutKata.Domain.Models.Interfaces;
 
 namespace LateRooms.CheckoutKata.Services.Test
 {
@@ -54,8 +56,9 @@ namespace LateRooms.CheckoutKata.Services.Test
         {
             // Arrange
             var productService = Substitute.For<IProductService>();
-            productService.GetItem("B").Returns(new Item { SKU = "B", UnitPrice = 30 },
-                                                new Item { SKU = "B", UnitPrice = 30 });
+            productService.GetItem("B")
+                          .Returns(new Item { SKU = "B", UnitPrice = 30, Discounts = new List<IDiscount>() { new BuyOneGetOneHalfPrice() } },
+                                   new Item { SKU = "B", UnitPrice = 30, Discounts = new List<IDiscount>() { new BuyOneGetOneHalfPrice() } });
 
             var discountService = new DiscountService();
 
