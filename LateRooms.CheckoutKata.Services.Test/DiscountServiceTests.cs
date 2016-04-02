@@ -32,5 +32,49 @@ namespace LateRooms.CheckoutKata.Services.Test
             // Assert
             Assert.Equal(item3.UnitPrice, 10);
         }
+
+        [Fact]
+        public void WhenABuyOneGetOneHalfPriceOfferIsSupplied_ThenTheTotalPriceShouldBeCorrectlyUpdated()
+        {
+            // Arrange
+            var productService = Substitute.For<IProductService>();
+            productService.GetItem(Arg.Any<string>())
+                          .Returns(new Item { SKU = "B", UnitPrice = 30, Discounts = new List<IDiscount>() { new BuyOneGetOneHalfPrice() } },
+                                   new Item { SKU = "B", UnitPrice = 30, Discounts = new List<IDiscount>() { new BuyOneGetOneHalfPrice() } });
+
+            var discountService = new DiscountService();
+
+            var service = new CheckoutService(productService, discountService);
+
+            // Act
+            service.Scan("B");
+            service.Scan("B");
+
+            // Assert
+            Assert.Equal(service.GetTotalPrice(), 45);
+        }
+
+
+
+        [Fact]
+        public void WhenNoDiscountsAreSupplied_ThenTheTotalPriceShouldBeCorrectlyUpdated()
+        {
+            // Arrange
+            var productService = Substitute.For<IProductService>();
+            productService.GetItem(Arg.Any<string>())
+                          .Returns(new Item { SKU = "A", UnitPrice = 30 },
+                                   new Item { SKU = "A", UnitPrice = 30 });
+
+            var discountService = new DiscountService();
+
+            var service = new CheckoutService(productService, discountService);
+
+            // Act
+            service.Scan("A");
+            service.Scan("A");
+
+            // Assert
+            Assert.Equal(service.GetTotalPrice(), 60);
+        }
     }
 }

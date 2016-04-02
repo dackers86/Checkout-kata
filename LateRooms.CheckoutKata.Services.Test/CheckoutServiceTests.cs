@@ -18,7 +18,7 @@ namespace LateRooms.CheckoutKata.Services.Test
         {
             // Arrange
             var productService = Substitute.For<IProductService>();
-            productService.GetItem("A").Returns(new Item { SKU = "A", UnitPrice = 1 });
+            productService.GetItem(Arg.Any<string>()).Returns(new Item { SKU = "A", UnitPrice = 1 });
 
             var discountService = new DiscountService();
 
@@ -36,8 +36,8 @@ namespace LateRooms.CheckoutKata.Services.Test
         {
             // Arrange
             var productService = Substitute.For<IProductService>();
-            productService.GetItem("A").Returns(new Item { SKU = "A", UnitPrice = 1 });
-            productService.GetItem("B").Returns(new Item { SKU = "B", UnitPrice = 1 });
+            productService.GetItem(Arg.Any<string>()).Returns(new Item { SKU = "A", UnitPrice = 1 });
+            productService.GetItem(Arg.Any<string>()).Returns(new Item { SKU = "B", UnitPrice = 1 });
 
             var discountService = new DiscountService();
 
@@ -49,27 +49,6 @@ namespace LateRooms.CheckoutKata.Services.Test
 
             // Assert
             Assert.Equal(service.GetTotalPrice(), 2);
-        }
-
-        [Fact]
-        public void WhenScanningOfferedItems_ThenTheTotalPriceShouldBeCorrectlyUpdated()
-        {
-            // Arrange
-            var productService = Substitute.For<IProductService>();
-            productService.GetItem("B")
-                          .Returns(new Item { SKU = "B", UnitPrice = 30, Discounts = new List<IDiscount>() { new BuyOneGetOneHalfPrice() } },
-                                   new Item { SKU = "B", UnitPrice = 30, Discounts = new List<IDiscount>() { new BuyOneGetOneHalfPrice() } });
-
-            var discountService = new DiscountService();
-
-            var service = new CheckoutService(productService, discountService);
-
-            // Act
-            service.Scan("B");
-            service.Scan("B");
-
-            // Assert
-            Assert.Equal(service.GetTotalPrice(), 45);
         }
     }
 }
