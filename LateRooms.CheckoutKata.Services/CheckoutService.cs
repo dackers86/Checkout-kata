@@ -23,6 +23,12 @@ namespace LateRooms.CheckoutKata.Services
         public void Scan(string item)
         {
             var product = _productService.GetItem(item);
+
+            if (product.SKU == "B" && _items.Any(x => x.SKU == product.SKU))
+            {
+                product.UnitPrice = product.UnitPrice / 2;
+            }
+
             _items.Add(product);
         }
 

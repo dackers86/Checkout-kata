@@ -44,5 +44,23 @@ namespace LateRooms.CheckoutKata.Services.Test
             // Assert
             Assert.Equal(service.GetTotalPrice(), 2);
         }
+
+        [Fact]
+        public void WhenScanningOfferedItems_ThenTheTotalPriceShouldBeCorrectlyUpdated()
+        {
+            // Arrange
+            var productService = Substitute.For<IProductService>();
+            productService.GetItem("B").Returns(new Item { SKU = "B", UnitPrice = 30 },
+                                                new Item { SKU = "B", UnitPrice = 30 });
+
+            var service = new CheckoutService(productService);
+
+            // Act
+            service.Scan("B");
+            service.Scan("B");
+
+            // Assert
+            Assert.Equal(service.GetTotalPrice(), 45);
+        }
     }
 }
