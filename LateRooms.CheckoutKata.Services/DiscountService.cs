@@ -15,6 +15,12 @@ namespace LateRooms.CheckoutKata.Services
             {
                 item.UnitPrice = item.UnitPrice / 2;
             }
+
+            if (item.SKU == "A" && items.Where(x => x.SKU == "A").ToList().Count == 2)
+            {
+                item.UnitPrice = item.UnitPrice - 20;
+            }
+
             return item;
         }
     }       

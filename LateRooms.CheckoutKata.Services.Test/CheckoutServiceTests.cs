@@ -57,7 +57,6 @@ namespace LateRooms.CheckoutKata.Services.Test
             productService.GetItem("B").Returns(new Item { SKU = "B", UnitPrice = 30 },
                                                 new Item { SKU = "B", UnitPrice = 30 });
 
-
             var discountService = new DiscountService();
 
             var service = new CheckoutService(productService, discountService);
